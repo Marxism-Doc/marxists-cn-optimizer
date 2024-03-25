@@ -1,0 +1,713 @@
+/* ==UserStyle==
+@name           marxists-cn optimizer
+@namespace      marxists-cn-optimizer
+@version        1.3.2
+@description    调整中马库文章行宽，删除背景，并将正文改为衬线字体（请在浏览器设置中自定义衬线字体）。
+@author         https://github.com/Marxism-Doc
+@advanced dropdown Font "字体" {
+    DefaultSerif "默认衬线" <<<EOT
+    body {
+        --myfont: serif;
+    }
+    EOT;
+
+    FangZheng "方正系列" <<<EOT
+    @font-face {
+        font-family: 'SourceHan-Series';
+        font-weight: normal;
+        font-style: normal;
+        src: local('FZShuSong-Z01');
+    }
+    @font-face {
+        font-family: 'SourceHan-Series';
+        font-weight: bold;
+        font-style: normal;
+        src: local('FZHei-B01');
+    }
+    @font-face {
+        font-family: 'SourceHan-Series';
+        font-weight: normal;
+        font-style: italic;
+        src: local('FZKai-Z03');
+    }
+    body {
+        --myfont: 'SourceHan-Series';
+    }
+    EOT;
+
+	SourceHan "思源系列" <<<EOT
+    @font-face {
+        font-family: 'SourceHan-Series';
+        src: local('Source Han Serif SC');
+    }
+    @font-face {
+        font-family: 'SourceHan-Series';
+        font-weight: bold;
+        src: local('Source Han Sans SC Medium');
+    }
+    body {
+        --myfont: 'SourceHan-Series';
+    }
+    EOT;
+}
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/www\\.marxists\\.org\\/chinese\\/.*(?<!index\\.htm)$") {
+    /* 非目录页面 */
+    /*[[Font]]*/
+    body {
+        font-family: var(--myfont, serif);
+        margin: auto;
+        max-width: 360pt;
+        background-image: none;
+    }
+
+    html {
+        font-family: var(--myfont, serif);
+        text-align: justify;
+        line-height: 200%;
+        margin: 0px 10px;
+        margin-left: 20pt;
+        margin-right: 30pt;
+    }
+
+    p.MsoNormal,
+    li.MsoNormal,
+    div.MsoNormal {
+        text-align: justify;
+        text-justify: auto;
+        font-family: var(--myfont, serif);
+    }
+
+    h1 {
+        font-size: 20pt;
+        letter-spacing: 1.5pt;
+        margin-top: 16px;
+        text-align: center;
+        line-height: 200%
+    }
+    h2 {
+        LINE-HEIGHT: 200%;
+        text-align: center;
+    }
+    h3 {
+        font-family: var(--myfont, serif);
+        font-weight: normal;
+        font-size: 17pt;
+        letter-spacing: 3pt;
+        margin-top: 16px;
+        text-align: center;
+        line-height: 200%
+    }
+    
+    /* 小标题，有时用作副标题 */
+    h4 {
+        font-family: var(--myfont, serif);
+        font-size: 15pt;
+        letter-spacing: 2pt;
+        line-height: 200%
+    }
+    h5 {
+        font-size: 13.5pt;
+        letter-spacing: 2pt
+    }
+
+    A:link {
+        /* COLOR: #000080; */
+        COLOR: #0F4BFF;
+        TEXT-DECORATION: none
+    }
+    A:visited {
+        COLOR: #0F4BFF;
+        TEXT-DECORATION: none;
+    }
+    A:active {
+        COLOR: #0000ff;
+        TEXT-DECORATION: none;
+    }
+    A:hover {
+        COLOR: #ff0000;
+        TEXT-DECORATION: underline;
+    }
+
+    p {
+        text-indent: 0em;
+        line-height: 180%;
+        font-family: var(--myfont, serif);
+    }
+    /* 文章标题 */
+    p.title0 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 24.0pt;
+        font-family: var(--myfont, serif);
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #EC0000
+    }
+    /* 章节标题 */
+    p.title1 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 19pt;
+        font-family: var(--myfont, serif);
+        letter-spacing: 3px;
+        margin-top: 30pt;
+    }
+    p.title2 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 24.0pt;
+        font-family: var(--myfont, serif);
+        letter-spacing: 2px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #FFFFFF
+    }
+
+    p.weba {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 9pt;
+        color: #CC9900;
+    }
+    p.author {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 200%;
+        font-size: 13.5pt;
+        letter-spacing: 2pt;
+        font-weight: bold
+    }
+    p.date {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 200%;
+        font-size: 12pt;
+        letter-spacing: 1pt;
+    }
+
+    p.intr {
+        width: auto;
+        font-family: var(--myfont, serif);
+        font-size: 10.5pt;
+        line-height: 200%;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        margin-top: 10px;
+        background-color: #EBEBEB;
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    p.intr1 {
+        max-width: 100%;
+        font-family: var(--myfont, serif);
+        font-size: 12px;
+        margin-left: -12%;
+    }
+    
+    div.a1 {
+        font-family: var(--myfont, serif);
+        font-size: 11pt;
+        color: #000080;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #D1E9E9;
+    }
+    div.a2 {
+        font-family: var(--myfont, serif);
+        font-size: 11pt;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #E7E7CD
+    }
+    div.a3 {
+        font-family: var(--myfont, serif);
+        margin: 10pt 32px;
+        font-size: 11pt;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #E7E7CD;
+    }
+    div.a4 {
+        font-family: var(--myfont, serif);
+        font-size: 10.5pt;
+        line-height: 200%;
+        border: 2px solid #C0C0C0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #EBEBEB;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+
+    .notelink {
+        vertical-align: super;
+        font-size: smaller;
+    }
+    .quote {
+        text-indent: 2em;
+        margin: 10px 0 10px 30px;
+        padding: 0 0 0 5px;
+        border-left: 3px solid;
+        font-size: 90%;
+        line-height: 150%;
+    }
+
+    div.footnote {
+        padding: 0.5ex 2ex;
+        background-color: #c0c0c0;
+        font-size: 80%;
+    }
+    p.footnote {
+        line-height: 100%;
+    }
+    .endnote {
+        border-top: 6px solid;
+    }
+
+    hr.head {
+        height: 3px;
+        color: #000000;
+    }
+
+    pre {
+        font-family: var(--myfont, serif);
+        font-size: 100%;
+        line-height: 150%;
+        white-space: pre-wrap;
+        /* css-3 */
+        white-space: -moz-pre-wrap !important;
+        /* mozilla, since 1999 */
+        white-space: pre-wrap;
+        /* opera 4-6 */
+        white-space: -o-pre-wrap;
+        /* opera 7 */
+        word-wrap: break-word;
+        /* internet explorer 5.5+ */
+    }
+
+
+    .content {
+        LINE-HEIGHT: 180%;
+        FONT-FAMILY: var(--myfont, serif);
+        MARGIN-left: 12%;
+        MARGIN-right: 12%;
+    }
+    .content IMG {
+        MARGIN: 7px
+    }
+    .TitleLinks {
+        TEXT-ALIGN: center
+    }
+    .TitleLinks .content {
+        LINE-HEIGHT: 20pt
+    }
+    .TitleLinks .content IMG {
+        MARGIN-TOP: 7px;
+        MARGIN-BOTTOM: 7px
+    }
+    table {
+        max-width: 360pt;
+        line-height: 180%
+    }
+    table.a01 {
+        border: 1.0pt solid windowtext;
+        text-align: justify;
+        text-justify: auto;
+        font-size: 11.5pt;
+        font-family: var(--myfont, serif);
+    }
+    table.table1 {
+        max-width: 360pt;
+        line-height: 200%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    table.table2 {
+        max-width: 360pt;
+        border: 1.0pt solid #000000;
+        line-height: 180%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    table.note {
+        border: 0pt solid windowtext;
+        text-align: justify;
+        text-justify: auto;
+        font-size: 10.5pt;
+        font-family: var(--myfont, serif);
+        color: #003E00
+    }
+    #table1 {
+        line-height: 200%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    #table2 {
+        border: 1.0pt solid #000000;
+        line-height: 180%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    td {
+        max-width: 360pt;
+        line-height: 180%;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    img {
+        max-width: 360pt;
+    }
+}
+
+@-moz-document regexp("^https:\\/\\/www\\.marxists\\.org\\/chinese\\/.*index\\.htm$") {
+    /* 目录页面 */
+    /*[[Font]]*/
+    body {
+        font-family: var(--myfont, serif);
+        margin: auto;
+        /* max-width: 360pt; */
+        background-image: none;
+    }
+
+    html {
+        font-family: var(--myfont, serif);
+        text-align: justify;
+        line-height: 200%;
+        margin: 0px 10px;
+        margin-left: 20pt;
+        margin-right: 30pt;
+    }
+
+    p.MsoNormal,
+    li.MsoNormal,
+    div.MsoNormal {
+        text-align: justify;
+        text-justify: auto;
+        font-family: var(--myfont, serif);
+    }
+
+    h1 {
+        font-size: 20pt;
+        letter-spacing: 1.5pt;
+        margin-top: 16px;
+        text-align: center;
+        line-height: 200%
+    }
+    h2 {
+        LINE-HEIGHT: 200%;
+        text-align: center;
+    }
+    h3 {
+        font-family: var(--myfont, serif);
+        font-weight: normal;
+        font-size: 17pt;
+        letter-spacing: 3pt;
+        margin-top: 16px;
+        text-align: center;
+        line-height: 200%
+    }
+    
+    /* 小标题，有时用作副标题 */
+    h4 {
+        font-family: var(--myfont, serif);
+        font-size: 15pt;
+        letter-spacing: 2pt;
+        line-height: 200%
+    }
+    h5 {
+        font-size: 13.5pt;
+        letter-spacing: 2pt
+    }
+
+    A:link {
+        /* COLOR: #000080; */
+        COLOR: #0F4BFF;
+        TEXT-DECORATION: none
+    }
+    A:visited {
+        COLOR: #0F4BFF;
+        TEXT-DECORATION: none;
+    }
+    A:active {
+        COLOR: #0000ff;
+        TEXT-DECORATION: none;
+    }
+    A:hover {
+        COLOR: #ff0000;
+        TEXT-DECORATION: underline;
+    }
+
+    p {
+        text-indent: 0em;
+        line-height: 180%;
+        font-family: var(--myfont, serif);
+    }
+    /* 文章标题 */
+    p.title0 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 24.0pt;
+        font-family: var(--myfont, serif);
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #EC0000
+    }
+    /* 章节标题 */
+    p.title1 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 19pt;
+        font-family: var(--myfont, serif);
+        letter-spacing: 3px;
+        margin-top: 30pt;
+    }
+    p.title2 {
+        text-align: center;
+        line-height: 200%;
+        font-size: 24.0pt;
+        font-family: var(--myfont, serif);
+        letter-spacing: 2px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #FFFFFF
+    }
+
+    p.weba {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 9pt;
+        color: #CC9900;
+    }
+    p.author {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 200%;
+        font-size: 13.5pt;
+        letter-spacing: 2pt;
+        font-weight: bold
+    }
+    p.date {
+        font-family: var(--myfont, serif);
+        text-align: center;
+        line-height: 200%;
+        font-size: 12pt;
+        letter-spacing: 1pt;
+    }
+
+    p.intr {
+        width: auto;
+        font-family: var(--myfont, serif);
+        font-size: 10.5pt;
+        line-height: 200%;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        margin-top: 10px;
+        background-color: #EBEBEB;
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    p.intr1 {
+        max-width: 100%;
+        font-family: var(--myfont, serif);
+        font-size: 12px;
+        margin-left: -12%;
+    }
+    
+    div.a1 {
+        font-family: var(--myfont, serif);
+        font-size: 11pt;
+        color: #000080;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #D1E9E9;
+    }
+    div.a2 {
+        font-family: var(--myfont, serif);
+        font-size: 11pt;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #E7E7CD
+    }
+    div.a3 {
+        font-family: var(--myfont, serif);
+        margin: 10pt 32px;
+        font-size: 11pt;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #E7E7CD;
+    }
+    div.a4 {
+        font-family: var(--myfont, serif);
+        font-size: 10.5pt;
+        line-height: 200%;
+        border: 2px solid #C0C0C0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #EBEBEB;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+
+    .notelink {
+        vertical-align: super;
+        font-size: smaller;
+    }
+    .quote {
+        text-indent: 2em;
+        margin: 10px 0 10px 30px;
+        padding: 0 0 0 5px;
+        border-left: 3px solid;
+        font-size: 90%;
+        line-height: 150%;
+    }
+
+    div.footnote {
+        padding: 0.5ex 2ex;
+        background-color: #c0c0c0;
+        font-size: 80%;
+    }
+    p.footnote {
+        line-height: 100%;
+    }
+    .endnote {
+        border-top: 6px solid;
+    }
+
+    hr.head {
+        height: 3px;
+        color: #000000;
+    }
+
+    pre {
+        font-family: var(--myfont, serif);
+        font-size: 100%;
+        line-height: 150%;
+        white-space: pre-wrap;
+        /* css-3 */
+        white-space: -moz-pre-wrap !important;
+        /* mozilla, since 1999 */
+        white-space: pre-wrap;
+        /* opera 4-6 */
+        white-space: -o-pre-wrap;
+        /* opera 7 */
+        word-wrap: break-word;
+        /* internet explorer 5.5+ */
+    }
+
+
+    .content {
+        LINE-HEIGHT: 180%;
+        FONT-FAMILY: var(--myfont, serif);
+        MARGIN-left: 12%;
+        MARGIN-right: 12%;
+    }
+    .content IMG {
+        MARGIN: 7px
+    }
+    .TitleLinks {
+        TEXT-ALIGN: center
+    }
+    .TitleLinks .content {
+        LINE-HEIGHT: 20pt
+    }
+    .TitleLinks .content IMG {
+        MARGIN-TOP: 7px;
+        MARGIN-BOTTOM: 7px
+    }
+    table {
+        /* max-width: 360pt; */
+        line-height: 180%
+    }
+    table.a01 {
+        border: 1.0pt solid windowtext;
+        text-align: justify;
+        text-justify: auto;
+        font-size: 11.5pt;
+        font-family: var(--myfont, serif);
+    }
+    table.table1 {
+        /* max-width: 360pt; */
+        line-height: 200%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    table.table2 {
+        /* max-width: 360pt; */
+        border: 1.0pt solid #000000;
+        line-height: 180%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    table.note {
+        border: 0pt solid windowtext;
+        text-align: justify;
+        text-justify: auto;
+        font-size: 10.5pt;
+        font-family: var(--myfont, serif);
+        color: #003E00
+    }
+    #table1 {
+        line-height: 200%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    #table2 {
+        border: 1.0pt solid #000000;
+        line-height: 180%;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+    td {
+        /* max-width: 360pt; */
+        line-height: 180%;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    img {
+        max-width: 360pt;
+    }
+}
